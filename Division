@@ -1,25 +1,23 @@
 import asyncio
 
-async def divide(a, b):
-
-    await asyncio.sleep(1)
+async def division(a, b):
 
     try:
         results = a/b
+        await asyncio.sleep(1)
         return results
-    
     except ZeroDivisionError:
-        print('Cannot divide by zero')
+        print('Cannot divide by Zero')
 
-async def main():
+async def divide():
 
     a = int(input('Enter the first Number: '))
     b = int(input('Enter the second Number: '))
 
-    results = await divide(a, b)
-    if results != None:
-            print(results)
+    results = await division(a, b)
 
-asyncio.run(main())
-        
+    if results != None:
+        print(results)
+
+asyncio.run(divide())
 
