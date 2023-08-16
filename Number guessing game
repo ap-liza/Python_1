@@ -1,0 +1,52 @@
+import random as r
+import math as m
+import time as t
+
+
+
+print(f'Welcome to our number guessing game')
+print(f'The computer picks a number between the range of numbers of your choice')
+print('Guess the number the computer picked!!!')
+print('Ready')
+t.sleep(1)
+
+def guessing(low, up):
+    computer_guess = r.randint(low, up)
+    print('The computer has guessed a number')
+    minimum_guess = round(m.log(up-low+1,2))
+    print(f'You have {minimum_guess} guesses to guess the correct answer')
+
+    count = 0
+    passes = m.log(up-low+1,2)
+
+    guess = int(input('Enter your guess: '))
+
+    while count < passes:
+        
+        count+=1
+
+        
+        if guess < computer_guess:
+            print('Guess is too low, Try again')
+            guess = int(input('Enter your guess: '))
+        elif guess > computer_guess:
+            print('Guess is too high, Try again')
+            guess = int(input('Enter your guess: '))
+        elif guess == computer_guess:
+            print(f'You have guessed the number {computer_guess} correctly with {minimum_guess} trys')
+
+    if count >= passes:
+        print(f'You have exhausted your number of guesses!!. Better Luck next time')
+
+lower = int(input('Enter the lower number: '))
+upper = int(input('Enter the upper number: '))
+
+while lower == upper or upper < lower:
+    print('Inputs invalid, Try again')
+    lower = int(input('Enter the lower number: '))
+    upper = int(input('Enter the upper number: '))
+else:
+    guessing(lower, upper)
+
+
+
