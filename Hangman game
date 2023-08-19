@@ -1,0 +1,65 @@
+#Hangman game
+import random as r
+
+
+def hangman(word):
+
+    chances = 12
+    guessed = []
+    
+    print(f'You have {chances} chances to guess')
+
+    while chances > 0:
+        print()
+        chances -=1
+        guess = input(('Enter A letter: ')).lower()
+        
+
+        if len(guess)!=1 or not guess.isalpha():
+            print('Enter a single letter')
+            continue
+
+        if guess not in word:
+            print('Incorrect')
+            continue
+        
+        if guess in word:
+            guessed.append(guess)
+            
+            for char in word:
+                if char in guessed:
+                    print(char, end = '')
+                else:
+                    print('-', end = '')
+                    
+        if all(char in guessed for char in word):
+            print()
+            print('Yayy You guessed the word correctly')
+            break
+        
+        if chances ==0:
+            print('You have exhausted your chances. Better Luck next time')
+            break
+    
+
+print('Welcome to Our Hangman game')
+print()
+
+
+word_list = ['play', 'love','win', 'bake', 'sweat', 'broke']
+guess_word = r.choice(word_list)
+hin = guess_word[0]
+
+hint = int(input('Press 1 if you want a hint or 2 to continue: '))
+if hint == 1:
+    print(f'HINT: {hin}')
+    print('All the best')
+    t.sleep(1)
+    hangman(guess_word)
+elif hint == 2:
+    print('All the best')
+    t.sleep(1)
+    hangman(guess_word)
+elif not hint.isdigit():
+    print('Invalid Input')
+
